@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<listener>
+		<listener-class>com.hwacom.ngtms.am.server.InitServer</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>amService</servlet-name>
+		<servlet-class>com.hwacom.ngtms.am.server.AmServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>weatherHistoryDataService</servlet-name>
+		<servlet-class>com.hwacom.ngtms.dgs.weather.am.server.HistoryDataServiceImpl</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>weatherDeviceStatusService</servlet-name>
+		<servlet-class>com.hwacom.ngtms.dgs.weather.am.server.DeviceStatusServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>amService</servlet-name>
+		<url-pattern>/rd/AmService</url-pattern>
+		<url-pattern>/wd/AmService</url-pattern>
+		<url-pattern>/vi/AmService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>weatherHistoryDataService</servlet-name>
+		<url-pattern>/rd/HistoryDataService</url-pattern>
+		<url-pattern>/wd/HistoryDataService</url-pattern>
+		<url-pattern>/vi/HistoryDataService</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>weatherDeviceStatusService</servlet-name>
+		<url-pattern>/rd/DeviceStatusService</url-pattern>
+		<url-pattern>/wd/DeviceStatusService</url-pattern>
+		<url-pattern>/vi/DeviceStatusService</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>home.html</welcome-file>
+	</welcome-file-list>
+</web-app>
