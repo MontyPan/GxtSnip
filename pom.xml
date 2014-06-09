@@ -8,6 +8,7 @@
 	<properties>
 		<com.google.gwt.version>2.6.1</com.google.gwt.version>
 		<com.sencha.gxt.version>3.1.0</com.sencha.gxt.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>		
 		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
 	</properties>
 
