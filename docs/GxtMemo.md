@@ -70,6 +70,7 @@ ui.xml 裡頭一定只能
 
 幹這什麼黑魔法。
 
+______________________________________________________________________
 
 ## Chart ##
 `chart.redrawChart()` 之類的繪圖時刻如果炸 `java.lang.NegativeArraySizeException` 之類狀況，
@@ -78,3 +79,10 @@ ui.xml 裡頭一定只能
 
 ### Legend ###
 `Legend` 的資料來源是從 `Series.setYField()` 傳入的 `ValueProvider` 的 `getPath()`。
+
+______________________________________________________________________
+
+## DnD ##
+`new DropTarget(foo)` 會讓 `foo` 變成可 drop 的對象，
+囧點在於他並不會管 drag 的來源、預設所有的 DnD 行為都收，
+必須自己去排除哪些 drag 來源是不想處理的... 有點麻煩阿...... Orz
