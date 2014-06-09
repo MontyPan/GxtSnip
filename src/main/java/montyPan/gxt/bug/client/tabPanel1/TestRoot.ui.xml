@@ -1,0 +1,26 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" 
+	xmlns:core="urn:import:com.sencha.gxt.widget.core.client"  
+	xmlns:u="urn:import:montyPan.gxt.bug.client.tabPanel1">
+	<ui:style>
+	
+	</ui:style>
+	
+	<ui:with field="firstConfig"
+		type="com.sencha.gxt.widget.core.client.TabItemConfig">
+		<ui:attributes text="第一頁就正常" /> 
+	</ui:with>
+	<ui:with field="secondConfig"
+		type="com.sencha.gxt.widget.core.client.TabItemConfig">
+		<ui:attributes text="第二頁以後就失敗" />
+	</ui:with>
+		
+	<core:TabPanel ui:field="root">
+		<core:child config="{firstConfig}">
+			<u:TestView />
+		</core:child>
+		<core:child config="{secondConfig}">
+			<u:TestView />
+		</core:child>
+	</core:TabPanel>
+</ui:UiBinder>

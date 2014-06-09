@@ -82,8 +82,6 @@
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
 					<i18nMessagesBundles>
 						<!-- 新增的 I18N Message 檔要在這裡作對應 -->
-						<i18nMessagesBundle>com.hwacom.ngtms.am.client.Messages</i18nMessagesBundle>
-						<i18nMessagesBundle>com.hwacom.ngtms.dgs.weather.am.client.Messages</i18nMessagesBundle>
 					</i18nMessagesBundles>
 				</configuration>
 			</plugin>
