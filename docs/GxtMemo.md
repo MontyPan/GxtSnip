@@ -76,6 +76,10 @@ ______________________________________________________________________
 `chart.redrawChart()` 之類的繪圖時刻如果炸 `java.lang.NegativeArraySizeException` 之類狀況，
 先檢查一下 chart 的大小是否合理。如果 chart 沒有大小（1 * 1），那麼炸 exception 好像也很合理。
 
+如果用 `TimeAxis` 作 X 軸（不確定作 Y 軸會怎樣 XD），
+直接設定 `setStartDate()` 跟 `setEndDate()` 就會幫你過濾掉不在時間範圍內的 data，
+不用自己整理 store。
+
 
 ### Legend ###
 `Legend` 的資料來源是從 `Series.setYField()` 傳入的 `ValueProvider` 的 `getPath()`。
