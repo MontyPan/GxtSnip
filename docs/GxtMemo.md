@@ -89,10 +89,10 @@ ______________________________________________________________________
 這在「清空 / 重塞 store、又變更其他 axis」的前提下，`chart.redrawChart()` 會炸。
 因為 render 實際處理的是 `getCurrentStore()`，如果舊的 store 格式跟新的 axis 格式對不上，就會出錯。
 解法是在變更其他 axis 之後作 `TimerAxis.drawAxis(false)`（傳入 true / false 好像沒差），
-在 `drawAxis()` 裡頭會重新計算 / 設定 `currentStore`。
+在 `drawAxis()` 裡頭的 `applyData()`（`TimeAxis` 有 override）會重新計算 / 設定 `currentStore`。
 當然這有點浪費，因為在 `chart.render()` 裡頭其實會對各個 axis 作 `drawAxis(false)`，
-只能說理論上沒辦法控制 `TimerAxis` 一定要先作，前提觸發的條件又不是很 general，
-只好覆蓋新鮮的肝臟，結束這一回合 T__T。
+只能說理論上沒辦法控制 `TimerAxis` 一定要先作，`applyData()` 是 protected 所以沒辦法直接呼叫
+前提觸發的條件又不是很 general，只好覆蓋新鮮的肝臟，結束這一回合 T__T。
 
 
 ### Legend ###
