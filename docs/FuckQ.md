@@ -1,6 +1,6 @@
-Åı GWT ªº `Label` ¥i¥H®M¥Î GXT style ªº¤èªk¡H
-©Î¬O GXT ¤¤Åã¥Ü¦r¦êªº¡]Â²³æ¡^¤èªk¡H
+è®“ GWT çš„ `Label` å¯ä»¥å¥—ç”¨ GXT style çš„æ–¹æ³•ï¼Ÿ
+æˆ–æ˜¯ GXT ä¸­é¡¯ç¤ºå­—ä¸²çš„ï¼ˆç°¡å–®ï¼‰æ–¹æ³•ï¼Ÿ
 
-GXT `TimeField` ¦b setValue() ¤§«á increment ªº¥\¯à´N·|§¹¥ş¤£¨£¡H WHY¡H
+GXT `TimeField` åœ¨ setValue() ä¹‹å¾Œ increment çš„åŠŸèƒ½å°±æœƒå®Œå…¨ä¸è¦‹ï¼Ÿ WHYï¼Ÿ
 
-FramedPanel ¸ÌÀY¦³ FieldSet ¸ò button¡AFieldSet ªº¤j¤p¼µ¤£¶}¡H
+FramedPanel è£¡é ­æœ‰ FieldSet è·Ÿ buttonï¼ŒFieldSet çš„å¤§å°æ’ä¸é–‹ï¼Ÿ
