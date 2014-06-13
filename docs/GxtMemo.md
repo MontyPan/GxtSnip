@@ -10,6 +10,9 @@
 		<c:tool><f:Foo /></c:tool>
 	</c:ContentPanel>
 
+因為 GXT 的 component 都是這樣處理的（GWT 反而不是... WTF），
+所以當然就可以自動建立清單啦... 參見 [UiChildList.md]。
+
 
 ### SimpleContainer ###
 會自動讓小孩的大小跟自己的大小一樣
@@ -104,3 +107,10 @@ ______________________________________________________________________
 `new DropTarget(foo)` 會讓 `foo` 變成可 drop 的對象，
 囧點在於他並不會管 drag 的來源、預設所有的 DnD 行為都收，
 必須自己去排除哪些 drag 來源是不想處理的... 有點麻煩阿...... Orz
+
+______________________________________________________________________
+
+# 野生的 GWT #
+### ui:import ###
+似乎是 ui.xml 中可以使用 enum 的唯一方法
+（[ui:import ref](http://stackoverflow.com/questions/9492658/can-i-use-enum-values-as-field-values-inside-uibinder-template)）。
