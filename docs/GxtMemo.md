@@ -11,7 +11,7 @@
 	</c:ContentPanel>
 
 因為 GXT 的 component 都是這樣處理的（GWT 反而不是... WTF），
-所以當然就可以自動建立清單啦... 參見 [UiChildList.md]。
+所以當然就可以自動建立清單啦... 參見 [UiChildList.md](UiChildList.md)。
 
 
 ### SimpleContainer ###
@@ -53,6 +53,12 @@
 * 0 > x >= 1：小孩寬度會是 `100 * x`
 * x = -1：不管爸爸的大小，小孩自己的原本的寬度多大就多大（容易錯，使用注意）
 * x < -1：小孩寬度會是 `100 - y + x`。`y` 是其他兄弟姊妹的寬度總和
+
+
+### Grid ###
+`setView(GridView)` 可以設定一些... 還不確定可以幹麼的東西 [喂喂]。
+其中 `GridView.setForceFit()`，如果設定 `true` 則 Grid 不會出現 scroll bar；
+若有多個 column、縮小其中一個 column，則其他 column 會變大補滿（不確定演算法）。
 
 ______________________________________________________________________
 
