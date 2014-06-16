@@ -1,3 +1,5 @@
+GXT
+===
 自己寫的 composite 要自動調整大小，
 要注意是 extend GXT 的 `com.sencha.gxt.widget.core.client.Composite`，
 而不是 GWT 的 `com.google.gwt.user.client.ui.Composite`
@@ -122,7 +124,20 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
-# 野生的 GWT #
+野生的 GWT
+=========
+用 `ImageResource` 的 `Image` 如果要調整大小，
+
+	new Image(imgResource);	//size 太大會留白
+	new Image(imgResource.getSafeUri());	//OK
+
+
+## UiBinder ##
+用 UiBinder 弄畫面，執行時一直炸找不到 fooWidget class 的錯誤（但是 Eclipse 沒有 compile error），
+先單純用程式 new FooWidget() 出來，通常就會知道 FooWidget 錯在哪裡了。
+（2.5.1 時常見不小心用了 generic 的 `<>` 就炸了，但是 Eclipse 不會炸錯誤 Orz）
+
+
 ### ui:import ###
 似乎是 ui.xml 中可以使用 enum 的唯一方法
 （[ui:import ref](http://stackoverflow.com/questions/9492658/can-i-use-enum-values-as-field-values-inside-uibinder-template)）。
