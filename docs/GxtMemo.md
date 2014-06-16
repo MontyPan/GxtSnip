@@ -45,8 +45,14 @@
 
 ## layout data ##
 
-### HorizontalLayoutContainer.HorizontalLayoutData ###
-Returns the width specification. Values greater than 1 represent width in pixels. Values between 0 and 1 (inclusive) represent a percent of the width of the container. A value of -1 represents the default width of the associated widget. Values less than -1 represent the width of the container minus the absolute value of the widget width.
+### HorizontalLayoutData / VerticalLayoutData ###
+假設 `HorizontalLayoutContainer` 的寬度是 100，它的小孩有設定 `setLayoutData(ld)`，
+`ld` 有作 `ld.setWidth(x)`，則小孩的寬度會是：
+
+* x > 1：小孩寬度會是 `x`
+* 0 > x >= 1：小孩寬度會是 `100 * x`
+* x = -1：不管爸爸的大小，小孩自己的原本的寬度多大就多大（容易錯，使用注意）
+* x < -1：小孩寬度會是 `100 - y + x`。`y` 是其他兄弟姊妹的寬度總和
 
 ______________________________________________________________________
 
