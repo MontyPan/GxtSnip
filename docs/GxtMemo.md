@@ -16,6 +16,10 @@ GXT
 所以當然就可以自動建立清單啦... 參見 [UiChildList.md](UiChildList.md)。
 
 
+### FieldLabel ###
+`text` 跟 `widget` 的間隔距離始終是個謎...... WTF
+
+
 ### SimpleContainer ###
 會自動讓小孩的大小跟自己的大小一樣
 
@@ -88,6 +92,18 @@ ui.xml 裡頭一定只能
 幹這什麼黑魔法。
 
 ______________________________________________________________________
+
+## DrawComponent ##
+可以視為 GXT 的 canvas，更正確地說是 canvas container / wrapper。
+實際上的 canvas 是 `Surface`，會用 deferred binding 的方法抽換實做，
+目前大抵上預設是 `SVG`，遇到 IE6～8 會替換成 `VML`，
+另外還有隱藏實驗版（JavaDoc 找不到）的 `Canvas2d` 版。
+因為 wrapper 過，所以基本上可以不用理會底層實做，GXT 會提供一個一致的 API。
+
+目前單純顯示，可做出想要的效果。
+但是一旦搭配有 resize 機制的 GXT container（例如祖先有 `Viewport`），
+畫面上看起來就會一片空白（但是大小還在）... 還在追原因中 [淚目]
+
 
 ## Chart ##
 `chart.redrawChart()` 之類的繪圖時刻如果炸 `java.lang.NegativeArraySizeException` 之類狀況，
