@@ -16,6 +16,11 @@ GXT
 所以當然就可以自動建立清單啦... 參見 [UiChildList.md](UiChildList.md)。
 
 
+## Layout Container 系 ##
+有在[官方文件](http://docs.sencha.com/gxt-guides/3/ui/layout/LayoutContainers.html)的才算，
+是說 `TabPanel` 居然不算... ＝＝?
+
+
 ### FieldLabel ###
 `text` 跟 `widget` 的間隔距離始終是個謎...... WTF
 
@@ -34,6 +39,27 @@ GXT
 	</core:ContentPanel>
 
 
+### Dialog ###
+要知道使用者對 `Dialog` 做了什麼事情，是掛 `addDialogHideHandler()` 這個 handler。
+從 `DialogHideEvent.getHideButton()` 可以知道是按下哪個 button。
+不知道該說巧妙還是該說 WTF...... Orz
+
+
+### layout data ###
+
+#### HorizontalLayoutData / VerticalLayoutData ####
+假設 `HorizontalLayoutContainer` 的寬度是 100，它的小孩有設定 `setLayoutData(ld)`，
+`ld` 有作 `ld.setWidth(x)`，則小孩的寬度會是：
+
+* x > 1：小孩寬度會是 `x`
+* 0 > x >= 1：小孩寬度會是 `100 * x`
+* x = -1：不管爸爸的大小，小孩自己的原本的寬度多大就多大（容易錯，使用注意）
+* x < -1：小孩寬度會是 `100 - y + x`。`y` 是其他兄弟姊妹的寬度總和
+
+______________________________________________________________________
+
+## 一般 widget ##
+
 ### TabPanel ###
 在 ui.xml 當中只能這樣寫
 
@@ -49,23 +75,13 @@ GXT
 有點討厭，不過就算自己設計好像也沒辦法改變什麼 Orz
 
 
-## layout data ##
-
-### HorizontalLayoutData / VerticalLayoutData ###
-假設 `HorizontalLayoutContainer` 的寬度是 100，它的小孩有設定 `setLayoutData(ld)`，
-`ld` 有作 `ld.setWidth(x)`，則小孩的寬度會是：
-
-* x > 1：小孩寬度會是 `x`
-* 0 > x >= 1：小孩寬度會是 `100 * x`
-* x = -1：不管爸爸的大小，小孩自己的原本的寬度多大就多大（容易錯，使用注意）
-* x < -1：小孩寬度會是 `100 - y + x`。`y` 是其他兄弟姊妹的寬度總和
-
-
 ### Grid ###
 `setView(GridView)` 可以設定一些... 還不確定可以幹麼的東西 [喂喂]。
 其中 `GridView.setForceFit()`，如果設定 `true` 則 Grid 不會出現 scroll bar；
 若有多個 column、縮小其中一個 column，則其他 column 會變大補滿（不確定演算法）。
 
+
+### 
 ______________________________________________________________________
 
 ## store & value provider ##
