@@ -38,6 +38,9 @@ GXT
 		<core:button>
 	</core:ContentPanel>
 
+這個真的 WTF 破表，因為 `@UiChild` 看不出來有什麼限制、
+用 swing-way 的方法掛多個也沒問題，就是 ui.xml 只能掛一個... ＝＝"
+
 
 ### Dialog ###
 要知道使用者對 `Dialog` 做了什麼事情，是掛 `addDialogHideHandler()` 這個 handler。
