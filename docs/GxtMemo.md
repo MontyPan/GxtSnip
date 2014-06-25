@@ -34,12 +34,15 @@ GXT
 
 	<core:ContentPanel>
 		<core:button>
-			<!-- 只能一個 widget -->
+			<foo:Foo />
 		<core:button>
+		<core:button>
+			<foo:Foo />
+		<core:button>		
 	</core:ContentPanel>
 
-這個真的 WTF 破表，因為 `@UiChild` 看不出來有什麼限制、
-用 swing-way 的方法掛多個也沒問題，就是 ui.xml 只能掛一個... ＝＝"
+原來一個 `<core:button>` 只能塞一個 widget，我之前都誤會它了 [炸]。
+反過來說，`@UiChild` 的邏輯還要更深入的瞭解... (艸
 
 
 ### Dialog ###
@@ -83,8 +86,6 @@ ______________________________________________________________________
 其中 `GridView.setForceFit()`，如果設定 `true` 則 Grid 不會出現 scroll bar；
 若有多個 column、縮小其中一個 column，則其他 column 會變大補滿（不確定演算法）。
 
-
-### 
 ______________________________________________________________________
 
 ## store & value provider ##
@@ -161,6 +162,20 @@ ______________________________________________________________________
 
 野生的 GWT
 =========
+如果在 deploy / online 階段 RPC 突然出問題，server side 帳面上的 exception 是
+
+> Exception while dispatching incoming RPC call com.google.gwt.user.client.rpc.SerializationException: 
+> Type 'wtf.client.Foo' was not assignable to 'com.google.gwt.user.client.rpc.IsSerializable' and did not have a custom field serializer.
+> For security purposes, this type will not be serialized.
+
+如果往回找 log，會發現更之前就會炸了一個 exception，是找不到 `XXXX.gwt.rpc` 的檔案。
+這種情況，就是 client side（不知道為什麼）cache 住前一個版本（GWT compile 產出的）JS。
+理論上清空 browser cache（或是按下 Ctrl + F5），就會正常。
+
+至於 dev mode 階段，說真的，我還沒遇到過 [合掌]
+
+
+## Image ##
 用 `ImageResource` 的 `Image` 如果要調整大小，
 
 	new Image(imgResource);	//size 太大會留白
