@@ -15,6 +15,22 @@ GXT
 因為 GXT 的 component 都是這樣處理的（GWT 反而不是... WTF），
 所以當然就可以自動建立清單啦... 參見 [UiChildList.md](UiChildList.md)。
 
+`FooTabPanel` extends `TabPanel` 不明瞭為什麼這樣還是會去 call 到 `TabPanel.add()`：
+
+	//in FooTabPanel
+	@Override
+	@UiChild(tagname="tab")
+	public void add(IsWidget widget, TabItemConfig config) {
+		Window.alert("不會出現的訊息");
+	}
+
+	//in ui.xml
+	<foo:FooTabPanel>
+		<foo:tab><b:TextButton text="FOO" /></foo:tab>
+	</foo:FooTabPanel>
+
+如果 method 名字改成不是 `add()` 就沒問題...... 
+
 
 ## Layout Container 系 ##
 有在[官方文件](http://docs.sencha.com/gxt-guides/3/ui/layout/LayoutContainers.html)的才算，
@@ -85,6 +101,11 @@ ______________________________________________________________________
 `setView(GridView)` 可以設定一些... 還不確定可以幹麼的東西 [喂喂]。
 其中 `GridView.setForceFit()`，如果設定 `true` 則 Grid 不會出現 scroll bar；
 若有多個 column、縮小其中一個 column，則其他 column 會變大補滿（不確定演算法）。
+
+
+### ComboBox ###
+`setTriggerAction(TriggerAction.ALL)` 可以在使用者再次要求下拉選單時顯示所有值。
+像 `TimeField` 就非常需要... Orz
 
 ______________________________________________________________________
 
