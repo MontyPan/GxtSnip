@@ -67,6 +67,11 @@ GXT
 不知道該說巧妙還是該說 WTF...... Orz
 
 
+### AccordionLayoutContainer ###
+小孩只能是 `ContentPanel`，而且（應該說「所以」？）
+`ContentPanel` 還能塞 `AccordionLayoutAppearance` 來改變 `ContentPanel` 的外觀。 
+
+
 ### layout data ###
 
 #### HorizontalLayoutData / VerticalLayoutData ####
