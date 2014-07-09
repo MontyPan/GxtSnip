@@ -115,8 +115,8 @@ ______________________________________________________________________
 像 `TimeField` 就非常需要... Orz
 
 要注意 ComboBox 的顯示值（或著說 `LabelProvider.getLabel()` 的回傳值）不能是 `\n` 結尾。
-顯示上是不會有問題，但是不會觸發 `ValueChangeEvent`、
-而且在 onblur 的時候（會觸發 `SelectionEvent`）ComboBox 的值會消失。
+顯示上是不會有問題、也會觸發 `SelectionEvent`，
+但是在 onblur 的時候不會觸發 `ValueChangeEvent`、ComboBox 的值會消失。
 
 ______________________________________________________________________
 
