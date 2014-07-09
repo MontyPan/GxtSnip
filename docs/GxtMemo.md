@@ -32,7 +32,8 @@ GXT
 如果 method 名字改成不是 `add()` 就沒問題...... 
 
 
-## Layout Container 系 ##
+Layout Container 系
+-------------------
 有在[官方文件](http://docs.sencha.com/gxt-guides/3/ui/layout/LayoutContainers.html)的才算，
 是說 `TabPanel` 居然不算... ＝＝?
 
@@ -85,7 +86,8 @@ GXT
 
 ______________________________________________________________________
 
-## 一般 widget ##
+一般 widget
+----------
 
 ### TabPanel ###
 在 ui.xml 當中只能這樣寫
@@ -112,9 +114,14 @@ ______________________________________________________________________
 `setTriggerAction(TriggerAction.ALL)` 可以在使用者再次要求下拉選單時顯示所有值。
 像 `TimeField` 就非常需要... Orz
 
+要注意 ComboBox 的顯示值（或著說 `LabelProvider.getLabel()` 的回傳值）不能是 `\n` 結尾。
+顯示上是不會有問題，但是不會觸發 `ValueChangeEvent`、
+而且在 onblur 的時候（會觸發 `SelectionEvent`）ComboBox 的值會消失。
+
 ______________________________________________________________________
 
-## store & value provider ##
+store & value provider
+----------------------
 store 就是資料來源，value provider 就是決定顯示 vo 資料的方法
 
 ui.xml 裡頭一定只能
@@ -139,7 +146,8 @@ ui.xml 裡頭一定只能
 
 ______________________________________________________________________
 
-## DrawComponent ##
+DrawComponent
+-------------
 可以視為 GXT 的 canvas，更正確地說是 canvas container / wrapper。
 實際上的 canvas 是 `Surface`，會用 deferred binding 的方法抽換實做，
 目前大抵上預設是 `SVG`，遇到 IE6～8 會替換成 `VML`，
@@ -179,7 +187,8 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
-## DnD ##
+DnD
+---
 `new DropTarget(foo)` 會讓 `foo` 變成可 drop 的對象，
 囧點在於他並不會管 drag 的來源、預設所有的 DnD 行為都收，
 必須自己去排除哪些 drag 來源是不想處理的... 有點麻煩阿...... Orz
@@ -201,14 +210,16 @@ ______________________________________________________________________
 至於 dev mode 階段，說真的，我還沒遇到過 [合掌]
 
 
-## Image ##
+Image
+-----
 用 `ImageResource` 的 `Image` 如果要調整大小，
 
 	new Image(imgResource);	//size 太大會留白
 	new Image(imgResource.getSafeUri());	//OK
 
 
-## UiBinder ##
+UiBinder
+--------
 用 UiBinder 弄畫面，執行時一直炸找不到 fooWidget class 的錯誤（但是 Eclipse 沒有 compile error），
 先單純用程式 new FooWidget() 出來，通常就會知道 FooWidget 錯在哪裡了。
 （2.5.1 時常見不小心用了 generic 的 `<>` 就炸了，但是 Eclipse 不會炸錯誤 Orz）
