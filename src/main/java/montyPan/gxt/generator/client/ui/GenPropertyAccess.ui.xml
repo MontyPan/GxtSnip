@@ -1,0 +1,42 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" 
+	xmlns:c="urn:import:com.sencha.gxt.widget.core.client.container" 
+	xmlns:f="urn:import:com.sencha.gxt.widget.core.client.form" 
+	xmlns:b="urn:import:com.sencha.gxt.widget.core.client.button" xmlns:t="urn:import:com.sencha.gxt.widget.core.client.toolbar">
+	
+	<ui:with field="northLayoutData" type="com.sencha.gxt.widget.core.client.container.BorderLayoutContainer.BorderLayoutData">
+		<ui:attributes size="150" />
+	</ui:with>
+	<ui:with field="inputVData" type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData">
+		<ui:attributes width="1" height="50" />
+	</ui:with>
+	<ui:with field="optionVData" type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData">
+		<ui:attributes width="1" height="50" />
+	</ui:with>	
+	<ui:with field="codeVData" type="com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer.VerticalLayoutData">
+		<ui:attributes width="1" height="-100" />
+	</ui:with>
+	<c:VerticalLayoutContainer>
+		<c:HorizontalLayoutContainer layoutData="{inputVData}">
+			<f:TextField ui:field="className" width="500"/>
+			<t:LabelToolItem width="20" />
+			<b:TextButton ui:field="queryBtn" text="查詢" />
+		</c:HorizontalLayoutContainer>
+		<c:HorizontalLayoutContainer layoutData="{optionVData}">
+			<f:FieldLabel text="ModelKeyProvider">
+				<f:widget>
+					<f:ComboBox ui:field="modelKey" />
+				</f:widget>
+			</f:FieldLabel>
+			<t:LabelToolItem width="20" />
+			<f:FieldLabel text="LabelProvider">
+				<f:widget>
+					<f:ComboBox ui:field="label" />
+				</f:widget>
+			</f:FieldLabel>
+			<t:LabelToolItem width="20" />
+			<b:TextButton ui:field="genBtn" text="產生" enabled="false" />
+		</c:HorizontalLayoutContainer>
+		<f:TextArea ui:field="code" layoutData="{codeVData}" />
+	</c:VerticalLayoutContainer>
+</ui:UiBinder>

@@ -4,6 +4,16 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 
+	<servlet>
+		<servlet-name>xgenService</servlet-name>
+		<servlet-class>montyPan.gxt.generator.server.XGenServiceImpl</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>xgenService</servlet-name>
+		<url-pattern>/xGen/XGenService</url-pattern>
+	</servlet-mapping>
+	
 	<!-- Default page to serve -->
 	<welcome-file-list>
 		<welcome-file>home.html</welcome-file>
