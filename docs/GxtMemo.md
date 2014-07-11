@@ -73,7 +73,13 @@ Layout Container 系
 `ContentPanel` 還能塞 `AccordionLayoutAppearance` 來改變 `ContentPanel` 的外觀。 
 
 
-### layout data ###
+### HBox / VBox ###
+做了 `setPack()`，會發現小孩的 layoutData 不管怎麼設定 flex 值，
+都不會有預其中的大小變化，而是以小孩原本的大小呈現。
+目前這是實驗結果，還沒追 source code [死]。
+
+
+### HorizontalLayoutContainer / VerticalLayoutContainer ###
 
 #### HorizontalLayoutData / VerticalLayoutData ####
 假設 `HorizontalLayoutContainer` 的寬度是 100，它的小孩有設定 `setLayoutData(ld)`，
