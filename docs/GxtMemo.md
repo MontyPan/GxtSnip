@@ -116,6 +116,12 @@ ______________________________________________________________________
 若有多個 column、縮小其中一個 column，則其他 column 會變大補滿（不確定演算法）。
 
 
+#### AbstractGridEditing ####
+`setEditableGrid()` 如果傳入 null 值是表示移除 edit 的效果，
+因為一開始會作 `groupRegistration.removeHandler()`，然後在傳入值不為 null 才會掛相關 handler。
+這在初始化設定（尤其搭配 ui.xml）時要特別注意 [淚目]
+
+
 ### ComboBox ###
 `setTriggerAction(TriggerAction.ALL)` 可以在使用者再次要求下拉選單時顯示所有值。
 像 `TimeField` 就非常需要... Orz
