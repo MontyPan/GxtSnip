@@ -1,4 +1,4 @@
-package montyPan.gxt.toolApp;
+package montyPan.gwt.toolApp;
 
 import java.io.File;
 import java.io.FileInputStream;
