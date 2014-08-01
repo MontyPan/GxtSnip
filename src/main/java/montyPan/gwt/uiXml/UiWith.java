@@ -10,8 +10,8 @@ public class UiWith {
 	
 	public static UiWith decode(Element element) {
 		UiWith result = new UiWith();
-		result.field = element.getAttribute(FIELD_NAME).getValue();
-		result.type = element.getAttribute(TYPE_NAME).getValue();
+		result.field = element.getAttributeValue(FIELD_NAME);
+		result.type = element.getAttributeValue(TYPE_NAME);
 		result.children = element.getChildren();
 		return result;
 	}

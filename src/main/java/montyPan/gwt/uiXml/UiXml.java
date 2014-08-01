@@ -22,6 +22,7 @@ public class UiXml {
 	private Namespace uiBinderNS;
 	private HashMap<Namespace, Boolean> nsMap = new HashMap<>();
 	private HashMap<UiWith, Boolean> uiWithMap = new HashMap<>();
+	private HashMap<UiImport, Boolean> uiImportMap = new HashMap<>();
 	private ArrayList<Element> wtfList = new ArrayList<Element>();
 
 	public UiXml(List<Namespace> nsList) {
@@ -37,6 +38,10 @@ public class UiXml {
 	
 	public void addUiWith(UiWith uiWith) {
 		uiWithMap.put(uiWith, false);
+	}
+	
+	public void addUiImport(UiImport uiImport) {
+		uiImportMap.put(uiImport, false);
 	}
 	
 	public void addWtfNode(Element node) {
@@ -84,5 +89,14 @@ public class UiXml {
 
 	public ArrayList<Element> getWtfList() {
 		return wtfList;
+	}
+
+	public UiWith findUiWithByField(String value) {
+		for (UiWith uiWith : getUiWith()) {
+			if (value.startsWith(uiWith.getField())) {	//不用全字相等，因為有 {message.title} 這種情況
+				return uiWith;
+			}
+		}
+		return null;	//XXX 目前預計處理的範圍中是不會出現 null 的 \囧/
 	}
 }
