@@ -1,5 +1,3 @@
-GXT
-===
 自己寫的 composite 要自動調整大小，
 要注意是 extend GXT 的 `com.sencha.gxt.widget.core.client.Composite`，
 而不是 GWT 的 `com.google.gwt.user.client.ui.Composite`
@@ -210,39 +208,3 @@ DnD
 `new DropTarget(foo)` 會讓 `foo` 變成可 drop 的對象，
 囧點在於他並不會管 drag 的來源、預設所有的 DnD 行為都收，
 必須自己去排除哪些 drag 來源是不想處理的... 有點麻煩阿...... Orz
-
-______________________________________________________________________
-
-野生的 GWT
-=========
-如果在 deploy / online 階段 RPC 突然出問題，server side 帳面上的 exception 是
-
-> Exception while dispatching incoming RPC call com.google.gwt.user.client.rpc.SerializationException: 
-> Type 'wtf.client.Foo' was not assignable to 'com.google.gwt.user.client.rpc.IsSerializable' and did not have a custom field serializer.
-> For security purposes, this type will not be serialized.
-
-如果往回找 log，會發現更之前就會炸了一個 exception，是找不到 `XXXX.gwt.rpc` 的檔案。
-這種情況，就是 client side（不知道為什麼）cache 住前一個版本（GWT compile 產出的）JS。
-理論上清空 browser cache（或是按下 Ctrl + F5），就會正常。
-
-至於 dev mode 階段，說真的，我還沒遇到過 [合掌]
-
-
-Image
------
-用 `ImageResource` 的 `Image` 如果要調整大小，
-
-	new Image(imgResource);	//size 太大會留白
-	new Image(imgResource.getSafeUri());	//OK
-
-
-UiBinder
---------
-用 UiBinder 弄畫面，執行時一直炸找不到 fooWidget class 的錯誤（但是 Eclipse 沒有 compile error），
-先單純用程式 new FooWidget() 出來，通常就會知道 FooWidget 錯在哪裡了。
-（2.5.1 時常見不小心用了 generic 的 `<>` 就炸了，但是 Eclipse 不會炸錯誤 Orz）
-
-
-### ui:import ###
-似乎是 ui.xml 中可以使用 enum 的唯一方法
-（[ui:import ref](http://stackoverflow.com/questions/9492658/can-i-use-enum-values-as-field-values-inside-uibinder-template)）。
