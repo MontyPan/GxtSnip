@@ -1,4 +1,4 @@
-compatible 原則
+compatible 規範
 ---------------
 符合下列條件的 class 才能在 GWT 內使用：
 
@@ -15,20 +15,23 @@ _（沒有考慮撰寫 emulate class 的招數）_
 
 reference：
 
-* http://www.gwtproject.org/doc/latest/DevGuideCodingBasicsCompatibility.html
+* JRE compatibility：http://www.gwtproject.org/doc/latest/DevGuideCodingBasicsCompatibility.html
 * JRE emulation class： http://www.gwtproject.org/doc/latest/RefJreEmulation.html
 
 
-### RPC（serializable）原則 ###
+### RPC（serializable）規範 ###
 
-* 滿足 translatable 原則
-	* 注意：enum 只會處理 name
+* 滿足 compatible 規範
 * implement `IsSerializable` 或是 `Serializable`
 * 有 default（沒有參數）constructor，任何 access modifier 均可（private 也無所謂）。
-	或是根本沒有 constructor。
-* 所有不是 final、transient 的 field 都符合 RPC 原則。
+	或是根本沒有任何 constructor。
+* 所有 field 都符合 RPC 原則。
+	* 例外：final field（不會在 GWT RPC 中傳遞）
+	* 例外：transient field（接收端會得到 null）
 
 _（沒有考慮 custom serialization 的招數）_
+
+備註：enum 只傳遞名稱。例如 `FooEnum.FOO`，就只會傳 `FOO`，裡頭的 field 值一概忽略。
 
 reference：
 
