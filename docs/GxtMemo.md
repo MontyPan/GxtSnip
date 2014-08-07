@@ -85,7 +85,7 @@ Layout Container 系
 
 * x > 1：小孩寬度會是 `x`
 * 0 > x >= 1：小孩寬度會是 `100 * x`
-* x = -1：不管爸爸的大小，小孩自己的原本的寬度多大就多大（容易錯，使用注意）
+* x = -1：（預設值）不管爸爸的大小，小孩自己的原本的寬度多大就多大（容易錯，使用注意）
 * x < -1：小孩寬度會是 `100 + x`。
 
 ______________________________________________________________________
@@ -118,6 +118,21 @@ ______________________________________________________________________
 `setEditableGrid()` 如果傳入 null 值是表示移除 edit 的效果，
 因為一開始會作 `groupRegistration.removeHandler()`，然後在傳入值不為 null 才會掛相關 handler。
 這在初始化設定（尤其搭配 ui.xml）時要特別注意 [淚目]
+
+_（WTF：很多細節都需要進一步 trace 確認）_
+使用者的編輯行為會透過 `GridEditing` 影響 `Grid` 的 `Store`，
+實際作為是增加 `Change` 跟 `Record`。
+目前看起來，`Store` 只有提供兩個對應的 method：`commitChanges()` 跟 `rejectChanges()`
+來清空 `modifiedRecords`→才會讓畫面上的 dirty 樣子消失（__WTF：需要 trace code 確認__）。
+`commitChanges()` 跟 `rejectChanges()` 都會觸發 `StoreUpdateEvent`。
+這一切混著實際編輯 / RPC 行為就會變得十分詭異。
+
+首先，從 `StoreUpdateHandler` 無法得知是 `commitChanges()` 還是 `rejectChanges()` 所觸發，
+說不定還有其他的 method 也可以來亂 [喂喂]。
+再者，用 `StoreUpdateEvent.getItems()` 來取得變更的 model instance，假設這些送 RPC 之後失敗，
+目前看起來沒有辦法 roll back 回去？
+
+到底是漏掉什麼？ 還是 GXT 的 API 本來就開這麼鳥？
 
 
 ### ComboBox ###
