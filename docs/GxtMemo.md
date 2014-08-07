@@ -119,20 +119,27 @@ ______________________________________________________________________
 因為一開始會作 `groupRegistration.removeHandler()`，然後在傳入值不為 null 才會掛相關 handler。
 這在初始化設定（尤其搭配 ui.xml）時要特別注意 [淚目]
 
-_（WTF：很多細節都需要進一步 trace 確認）_
 使用者的編輯行為會透過 `GridEditing` 影響 `Grid` 的 `Store`，
 實際作為是增加 `Change` 跟 `Record`。
 目前看起來，`Store` 只有提供兩個對應的 method：`commitChanges()` 跟 `rejectChanges()`
-來清空 `modifiedRecords`→才會讓畫面上的 dirty 樣子消失（__WTF：需要 trace code 確認__）。
-`commitChanges()` 跟 `rejectChanges()` 都會觸發 `StoreUpdateEvent`。
-這一切混著實際編輯 / RPC 行為就會變得十分詭異。
+來清空 `modifiedRecords`→才會讓畫面上的 dirty 樣子消失（應該是 `StoreUpdateEvent` 的結果）。
+`commitChanges()` 跟 `rejectChanges()` 都會觸發 `StoreUpdateEvent`，
+實驗結果：`rejectChanges()` 如果影響 n 個 item，就會炸 n 個 `StoreUpdateEvent`。
 
-首先，從 `StoreUpdateHandler` 無法得知是 `commitChanges()` 還是 `rejectChanges()` 所觸發，
-說不定還有其他的 method 也可以來亂 [喂喂]。
-再者，用 `StoreUpdateEvent.getItems()` 來取得變更的 model instance，假設這些送 RPC 之後失敗，
-目前看起來沒有辦法 roll back 回去？
+從 `Store.getModifiedRecords()` 可以得到有改變（dirty）的 item：
 
-到底是漏掉什麼？ 還是 GXT 的 API 本來就開這麼鳥？
+	for (Store<Foo>.Record r : store.getModifiedRecords()) {
+		Foo fooInstance = r.getModel();
+		//此時 fooInstance 的內容為初始值，可以趁機作一些事情（？）
+	}
+
+要讓 `fooInstance` 的內容變成現在的值，有幾種作法：
+
+* `r.commit(boolean)`：單筆
+* `store.commitChanges()`：整個 store
+* 根據 `Record` / `Change` 來修改 `fooInstance` [暈]
+
+至於要發 RPC、萬一 RPC 失敗要能 rollback... 目前還沒有想法 [死]
 
 
 ### ComboBox ###
