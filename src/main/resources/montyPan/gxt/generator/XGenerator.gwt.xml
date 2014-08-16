@@ -10,4 +10,5 @@
 	<source path="shared" />
 	<entry-point class="montyPan.gxt.generator.client.XGenEP" />
 	<stylesheet src="reset.css" />
+	<add-linker name="xsiframe"/>
 </module>

@@ -8,4 +8,5 @@
 	<source path="shared" />
 	<entry-point class="montyPan.gxt.bug.client.BugEP" />
 	<stylesheet src="reset.css" />
+	<add-linker name="xsiframe"/>
 </module>

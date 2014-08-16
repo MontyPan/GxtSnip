@@ -84,11 +84,21 @@
 				</executions>
 				<configuration>
 					<gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
+					<precompile>false</precompile>
 					<runTarget>home.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
 					<i18nMessagesBundles>
 						<!-- 新增的 I18N Message 檔要在這裡作對應 -->
 					</i18nMessagesBundles>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<warSourceDirectory>${project.build.directory}/${project.build.finalName}</warSourceDirectory>
 				</configuration>
 			</plugin>
 
