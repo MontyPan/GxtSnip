@@ -1,0 +1,17 @@
+import com.google.gwt.event.shared.GwtEvent;
+
+public class {name}Event extends GwtEvent< {name}Handler> {
+	public static final Type< {name}Handler> TYPE = new Type< {name}Handler>();
+	
+	public {name}Event() {}
+	
+	@Override
+	public Type< {name}Handler> getAssociatedType() {
+		return TYPE;
+	}
+	
+	@Override
+	protected void dispatch({name}Handler handler) {
+		handler.on{name}(this);
+	}
+}

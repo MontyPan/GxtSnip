@@ -1,0 +1,5 @@
+import com.google.gwt.event.shared.EventHandler;
+
+public interface {name}Handler extends EventHandler{
+	public void on{name}({name}Event event);
+}

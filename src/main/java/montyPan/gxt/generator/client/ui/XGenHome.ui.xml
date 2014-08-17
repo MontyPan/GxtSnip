@@ -1,0 +1,15 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:core="urn:import:com.sencha.gxt.widget.core.client"
+	xmlns:gen="urn:import:montyPan.gxt.generator.client.ui" >
+	
+	<ui:with type="com.sencha.gxt.widget.core.client.TabItemConfig" field="event">
+		<ui:attributes text="Event" />
+	</ui:with>
+
+	<core:TabPanel>
+		<core:child config="{event}">
+			<gen:GenEvent />
+		</core:child>
+	</core:TabPanel>
+</ui:UiBinder>
