@@ -1,3 +1,6 @@
+總則
+====
+
 compatible 規範
 ---------------
 符合下列條件的 class 才能在 GWT 內使用：
@@ -38,12 +41,12 @@ reference：
 * RPC： http://www.gwtproject.org/doc/latest/DevGuideServerCommunication.html#DevGuideSerializableTypes
 
 
-Image
------
-用 `ImageResource` 的 `Image` 如果要調整大小，
+Super Dev Mode
+--------------
+修改 gwt.xml，目前測試結果是一定得要重開 SDM。（DevMode 好像可以不用）
 
-	new Image(imgResource);	//size 太大會留白
-	new Image(imgResource.getSafeUri());	//OK
+`Dev Mode On` bookmark 內容主要是把現在的頁面卡一段 `<script src="http://localhost:9876/dev_mode_on.js" />`，
+所以 code server 的 IP / port 號改變的話 bookmark 就得重拉一次。
 
 
 UiBinder
@@ -57,6 +60,19 @@ UiBinder
 似乎是 ui.xml 中可以使用 enum 的唯一方法
 （[ui:import ref](http://stackoverflow.com/questions/9492658/can-i-use-enum-values-as-field-values-inside-uibinder-template)）。
 
+______________________________________________________________________
+
+Widget 們
+=========
+
+Image
+-----
+用 `ImageResource` 的 `Image` 如果要調整大小，
+
+	new Image(imgResource);	//size 太大會留白
+	new Image(imgResource.getSafeUri());	//OK
+
+______________________________________________________________________
 
 無法分類
 --------
