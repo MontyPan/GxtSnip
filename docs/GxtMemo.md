@@ -30,8 +30,8 @@
 如果 method 名字改成不是 `add()` 就沒問題...... 
 
 
-Layout Container 系
--------------------
+Layout/Container 系 widget
+--------------------------
 有在[官方文件](http://docs.sencha.com/gxt-guides/3/ui/layout/LayoutContainers.html)的才算，
 是說 `TabPanel` 居然不算... ＝＝?
 
@@ -88,7 +88,21 @@ Layout Container 系
 * x = -1：（預設值）不管爸爸的大小，小孩自己的原本的寬度多大就多大（容易錯，使用注意）
 * x < -1：小孩寬度會是 `100 + x`。
 
-______________________________________________________________________
+
+輸入系 widget
+------------
+
+### ComboBox ###
+`setTriggerAction(TriggerAction.ALL)` 可以在使用者再次要求下拉選單時顯示所有值。
+像 `TimeField` 就非常需要... Orz
+
+要注意 ComboBox 的顯示值（或著說 `LabelProvider.getLabel()` 的回傳值）不能是 `\n` 結尾。
+顯示上是不會有問題、也會觸發 `SelectionEvent`，
+但是在 onblur 的時候不會觸發 `ValueChangeEvent`、ComboBox 的值會消失。
+
+如果 item 的值是 null，顯示時不會觸發 `LabelProvider.getLabel()`，
+在 expand 時選單會多一個高度很詭異的空白行。
+
 
 一般 widget
 ----------
@@ -140,15 +154,6 @@ ______________________________________________________________________
 * 根據 `Record` / `Change` 來修改 `fooInstance` [暈]
 
 至於要發 RPC、萬一 RPC 失敗要能 rollback... 目前還沒有想法 [死]
-
-
-### ComboBox ###
-`setTriggerAction(TriggerAction.ALL)` 可以在使用者再次要求下拉選單時顯示所有值。
-像 `TimeField` 就非常需要... Orz
-
-要注意 ComboBox 的顯示值（或著說 `LabelProvider.getLabel()` 的回傳值）不能是 `\n` 結尾。
-顯示上是不會有問題、也會觸發 `SelectionEvent`，
-但是在 onblur 的時候不會觸發 `ValueChangeEvent`、ComboBox 的值會消失。
 
 
 ### LabelToolItem ###
